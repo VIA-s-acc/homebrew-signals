@@ -1,27 +1,27 @@
 class Signals < Formula
   desc "Filter banks, wavelets and Toeplitz matrices with a terminal interface"
   homepage "https://github.com/VIA-s-acc/SignalProc"
-  version "0.8.0"
+  version "0.9.0"
   license "MIT"
 
   on_macos do
-    depends_on arch: :arm64
-
-    on_arm do
-      url "https://github.com/VIA-s-acc/SignalProc/releases/download/v0.8.0/signals-v0.8.0-macos-arm64.tar.gz"
-      sha256 "15575d5efdb0843de7adb43818dd9c151ec0b15e6db0a1f5437f00bf755d894c"
-    end
+    url "https://github.com/VIA-s-acc/SignalProc/releases/download/v0.9.0/signals-v0.9.0-macos-universal.tar.gz"
+    sha256 "e7e952fd8fd2ea99c6119145bbf829416f56f770aa48cf998714147cb03620f1"
   end
 
   on_linux do
     on_intel do
-      url "https://github.com/VIA-s-acc/SignalProc/releases/download/v0.8.0/signals-v0.8.0-linux-x86_64.tar.gz"
-      sha256 "4917679dcbfbb0924908e778ef3725208b76e8c6e13d3dbd7d34014bc4d01ffc"
+      url "https://github.com/VIA-s-acc/SignalProc/releases/download/v0.9.0/signals-v0.9.0-linux-x86_64.tar.gz"
+      sha256 "8b1129df13abd27b8b8566c3e003011d19f192341fd4bb35555a0a8011c840df"
     end
   end
 
   def install
     bin.install "signals"
+    man1.install "man/signals.1"
+    bash_completion.install "completions/signals.bash" => "signals"
+    zsh_completion.install "completions/_signals"
+    fish_completion.install "completions/signals.fish"
   end
 
   test do
